@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const baseUrl = '/';
+const baseUrl = process.env.NUXT_APP_BASE_URL || '/';
 
 const alias = {
     primevue: path.resolve(__dirname, '../../packages/primevue/src'),
@@ -60,6 +60,9 @@ const markdownRedirects = (() => {
 export default defineNuxtConfig({
     compatibilityDate: '2024-11-01',
     devtools: { enabled: false },
+    experimental: {
+        payloadExtraction: false
+    },
     modules: ['@primevue/nuxt-module'],
     components: [
         {
